@@ -37,7 +37,7 @@ $("body").ready(function () {
 			if (oReq.readyState == 4) {
 				if (oReq.status == 200) {
 					stopLoading();
-					$("#shareLink").html(document.domain + "/view/" + data.currentTarget.responseText);
+					$("#shareLink").html("http://" + document.domain + "/view/" + data.currentTarget.responseText);
 					$('#myModal').modal('show');
 				}
 			}
@@ -48,6 +48,10 @@ $("body").ready(function () {
 
 	$("#goToLink").click(function (e) {
 		window.location = $("#shareLink").html();
+	});
+
+	$("#copyToClipboard").click(function (e) {
+		window.prompt("Copy to clipboard: Ctrl+C, Enter", $("#shareLink").html());
 	});
 
 	function noopHandler(evt) {
