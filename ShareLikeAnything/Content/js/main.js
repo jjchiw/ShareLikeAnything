@@ -25,8 +25,29 @@ $("body").ready(function () {
 
 	function uploadFile(blob, e) {
 		showLoading();
-		if (blob == null)
+		var isValid = true;
+		var msgError = "";
+		if (blob == null) {
 			blob = e.originalEvent.clipboardData.getData('text/plain');
+			if (lengthInUtf8Bytes(blob) > 1000000) {
+				isValid = false;
+				msgError = "The text is bigger than 100,000 bytes";
+			}
+		} else {
+			if (blob.size > 5000000) {
+				isValid = false;
+				msgError = "The size of the file is bigger than 5,000,000 bytes";
+			}
+		}
+
+		if (!isValid) {
+			stopLoading();
+			$("#errorMessage").html(msgError);
+			$("#alertDialog").removeClass("hidden");
+			return;
+		}
+
+
 
 		var oMyForm = new FormData();
 		// HTML file input user's choice...
@@ -44,6 +65,12 @@ $("body").ready(function () {
 		}
 		oReq.open("POST", "/fileUpload");
 		oReq.send(oMyForm);
+	}
+
+	function lengthInUtf8Bytes(str) {
+		// Matches only the 10.. bytes that are non-initial characters in a multi-byte sequence.
+		var m = encodeURIComponent(str).match(/%[89ABab]/g);
+		return str.length + (m ? m.length : 0);
 	}
 
 	$("#goToLink").click(function (e) {

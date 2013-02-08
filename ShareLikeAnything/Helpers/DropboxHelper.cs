@@ -41,5 +41,10 @@ namespace ShareLikeAnything.Helpers
 		{
 			return _client.GetFile(path);
 		}
+
+		internal void DeleteFile(string path)
+		{
+			_client.Delete(path);
+		}
 	}
 }

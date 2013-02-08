@@ -8,6 +8,7 @@ using System.IO;
 using Nancy.Extensions;
 using Raven.Client;
 using ShareLikeAnything.Models;
+using System.Text;
 
 namespace ShareLikeAnything.Modules
 {
@@ -34,10 +35,19 @@ namespace ShareLikeAnything.Modules
 				string dataId;
 				if (file == null)
 				{
+					var str = Request.Form["data"].Value as string;
+					if (Encoding.UTF8.GetByteCount(str) > 1000000)
+					{
+						return HttpStatusCode.InsufficientStorage;
+					}
 					dataId = _dataUploadHelper.UploadData(Request.Form["data"].Value as string);
 				}
 				else
 				{
+					if (file.Value.Length > 5000000)
+					{
+						return HttpStatusCode.InsufficientStorage;
+					}
 					dataId = _dataUploadHelper.UploadData(file.ContentType, file.Value, Path.GetExtension(file.Name));
 				}
 				
@@ -49,19 +59,30 @@ namespace ShareLikeAnything.Modules
 				string id = x.Id.Value;
 
 				Data data = _session.Load<Data>("datas/" + id);
-				if(data.ContentType == "text/plain" && data.Url == string.Empty)
-					return Response.AsText(data.Text);
+				if (data == null)
+				{
+					return View["expire.html"];
+				}
+				//data.TimesView--;
+
+				if (data.TimesView == 0)
+				{
+					if (data.Url != null && data.Url != string.Empty)
+					{
+						_dropboxHelper.DeleteFile(data.Url);
+					}
+						
+					session.Delete<Data>(data);
+					return View["expire.html"];
+				}
+
+				if (data.ContentType == "text/plain" && data.Url == null || data.Url == string.Empty)
+					return View["view.html", new { Data = data.Text }];
 
 				var fileBytes = _dropboxHelper.GetFile(data.Url);
 				var memoryStream = new MemoryStream(fileBytes);
 
 				return Response.FromStream(memoryStream, data.ContentType);
-			};
-
-
-			Get["/ergo"] = x =>
-			{
-				return "hola";
 			};
 		}
 	}
