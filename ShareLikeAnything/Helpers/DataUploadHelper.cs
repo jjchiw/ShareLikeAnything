@@ -38,7 +38,7 @@ namespace ShareLikeAnything.Helpers
 			var extension = (fileExtension != "" ? fileExtension : string.Format(".{0}", MimeHelper.GetExtension(contentType)));
 			if(extension == ".")
 				extension = "";
-			var fileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), extension);
+			var fileName = string.Format("{0}{1}", Guid.NewGuid().ToString(), extension);
 			var path = _dropboxHelper.Upload(fileName, ReadFully(stream));
 
 			var data = new Data

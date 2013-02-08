@@ -49,7 +49,7 @@ namespace ShareLikeAnything.Modules
 				string id = x.Id.Value;
 
 				Data data = _session.Load<Data>("datas/" + id);
-				if(data.ContentType == "text/plain")
+				if(data.ContentType == "text/plain" && data.Url == string.Empty)
 					return Response.AsText(data.Text);
 
 				var fileBytes = _dropboxHelper.GetFile(data.Url);
