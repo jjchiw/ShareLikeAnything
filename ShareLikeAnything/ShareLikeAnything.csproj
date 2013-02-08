@@ -131,6 +131,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Content\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\DataUploadHelper.cs" />
