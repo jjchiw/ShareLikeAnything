@@ -19,7 +19,7 @@ namespace ShareLikeAnything.Helpers
 		{
 			base.ConfigureRequestContainer(container, context);
 
-			var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RavenHQ");
+			var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RAVENHQ_CONNECTION_STRING");
 			parser.Parse();
 
 			var documentStore = new DocumentStore
