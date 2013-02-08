@@ -97,27 +97,27 @@
     <None Include="Content\css\main.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\images\glyphicons-halflings-white.png">
+    <Content Include="Content\img\glyphicons-halflings-white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\images\glyphicons-halflings.png">
+    </Content>
+    <Content Include="Content\img\glyphicons-halflings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\scripts\vendor\bootstrap.js">
+    </Content>
+    <Content Include="Content\js\main.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\scripts\vendor\bootstrap.min.js">
+    </Content>
+    <Content Include="Content\js\vendor\bootstrap.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\scripts\vendor\jquery-1.9.0.min.js">
+    </Content>
+    <Content Include="Content\js\vendor\bootstrap.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\scripts\main.js">
+    </Content>
+    <Content Include="Content\js\vendor\jquery-1.9.0.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\scripts\vendor\modernizr-2.6.2-respond-1.1.0.min.js">
+    </Content>
+    <Content Include="Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Views\Home\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

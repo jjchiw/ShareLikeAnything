@@ -71,11 +71,7 @@ namespace ShareLikeAnything.Helpers
 			);
 
 			conventions.StaticContentsConventions.Add(
-				StaticContentConventionBuilder.AddDirectory("js", @"Content/scripts")
-			);
-
-			conventions.StaticContentsConventions.Add(
-				StaticContentConventionBuilder.AddDirectory("data", @"Content/data")
+				StaticContentConventionBuilder.AddDirectory("js", @"Content/js")
 			);
 		}
 	}
