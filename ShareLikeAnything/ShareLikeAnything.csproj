@@ -118,10 +118,12 @@
     <None Include="Content\scripts\vendor\modernizr-2.6.2-respond-1.1.0.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Views\Home\index.html">
+    <Content Include="Views\Home\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Views\Home\view.html" />
+    </Content>
+    <Content Include="Views\Home\view.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
