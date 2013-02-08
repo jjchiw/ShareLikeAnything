@@ -29,11 +29,10 @@ namespace ShareLikeAnything.Helpers
 			};
 
 			documentStore.Initialize();
-			documentStore.DatabaseCommands.EnsureDatabaseExists("ShareLikeAnything");
 
 
 			container.Register<IDocumentStore>(documentStore);
-			container.Register<IDocumentSession>(documentStore.OpenSession("ShareLikeAnything"));
+			container.Register<IDocumentSession>(documentStore.OpenSession());
 
 			var apiKey = WebConfigurationManager.AppSettings["dropboxApiKey"].ToString();
 			var apiSecret = WebConfigurationManager.AppSettings["dropboxApiSecret"].ToString();
