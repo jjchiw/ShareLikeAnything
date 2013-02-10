@@ -63,7 +63,7 @@ namespace ShareLikeAnything.Modules
 				{
 					return View["expire.html"];
 				}
-				//data.TimesView--;
+				data.TimesView--;
 
 				if (data.TimesView == 0)
 				{
@@ -77,7 +77,7 @@ namespace ShareLikeAnything.Modules
 				}
 
 				if (data.ContentType == "text/plain" && data.Url == null || data.Url == string.Empty)
-					return View["view.html", new { Data = data.Text }];
+					return View["view", new { Data = data.Text, SessionId = Guid.NewGuid().ToString() }];
 
 				var fileBytes = _dropboxHelper.GetFile(data.Url);
 				var memoryStream = new MemoryStream(fileBytes);

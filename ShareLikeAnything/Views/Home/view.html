@@ -45,6 +45,10 @@
 
         <div class="container">
             <div class="row">
+                <div class="span4">
+                    Session ID: <input id="sessionId" value="@Model.SessionId" disabled="disabled" />
+                </div>
+                <div class="span4">
                 Syntax <select id="sintaxHighlight">
                             <option value="apl">apl</option> 
                     <option value="asterisk">asterisk</option> 
@@ -105,6 +109,7 @@
                     <option value="z80">z80</option> 
 
                         </select>
+                </div>
             </div>
             <div class="row">
                 <textarea id="codeArea">
@@ -124,6 +129,12 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>        	window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
 
+        <script src="/js/vendor/signalr/jquery.signalR-1.0.0-rc2.min.js"></script>
+        <script src="/signalr/hubs" type="text/javascript"></script>
+        <script src="/js/vendor/diffmatchpatch/diff_match_patch.js" type="text/javascript"></script>
+        <script src="/js/view.js"></script>
+
+
         <script src="/js/vendor/bootstrap.min.js"></script>
         <script src="/js/view.js"></script>
 
@@ -137,9 +148,18 @@
         		s.parentNode.insertBefore(g, s)
       } (document, 'script'));
 
+      var editorHub = $.connection.codeEditorHub;
+      var dmp = new diff_match_patch();
+
       var myCodeMirror = CodeMirror.fromTextArea(codeArea, {
           lineNumbers: true,
           tabMode: "indent",
+          onKeyEvent: function (editor, event) {
+              if (event.type == "keyup") {
+                  var thisSessionId = $("#sessionId").val();
+                  editorHub.server.send(myCodeMirror.getValue(), thisSessionId);
+              }
+          }
       });
         </script>
 

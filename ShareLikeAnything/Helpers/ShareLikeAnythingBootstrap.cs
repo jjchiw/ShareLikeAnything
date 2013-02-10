@@ -10,11 +10,19 @@ using Raven.Client.Extensions;
 using Nancy.Conventions;
 using Raven.Abstractions.Data;
 using System.Web.Configuration;
+using System.Web.Routing;
 
 namespace ShareLikeAnything.Helpers
 {
 	public class ShareLikeAnythingBootstrap : Nancy.DefaultNancyBootstrapper
 	{
+		protected override void ApplicationStartup(TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
+		{
+			base.ApplicationStartup(container, pipelines);
+
+			RouteTable.Routes.MapHubs();
+		}
+
 		protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
 		{
 			base.ConfigureRequestContainer(container, context);

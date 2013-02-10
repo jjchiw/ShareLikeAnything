@@ -48,12 +48,34 @@
     <Reference Include="DropNet">
       <HintPath>..\packages\DropNet.1.9.3\lib\net35\DropNet.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.1.0.0-rc2\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.0.0-rc2\lib\net40\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.1.0.0-rc2\lib\net40\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.1.0.0-rc2\lib\net40\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.15.3\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.15.3\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Abstractions">
       <HintPath>..\packages\RavenDB.Client.2.0.2260\lib\net40\Raven.Abstractions.dll</HintPath>
@@ -225,9 +247,12 @@
     <Content Include="Content\js\vendor\codemirror\mode\yaml\yaml.js" />
     <Content Include="Content\js\vendor\codemirror\mode\z80\index.html" />
     <Content Include="Content\js\vendor\codemirror\mode\z80\z80.js" />
+    <Content Include="Content\js\vendor\diffmatchpatch\diff_match_patch.js" />
     <Content Include="Content\js\vendor\jquery-1.9.0.min.js" />
     <Content Include="Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Content\js\view.js" />
+    <Content Include="Content\js\vendor\signalr\jquery.signalR-1.0.0-rc2.js" />
+    <Content Include="Content\js\vendor\signalr\jquery.signalR-1.0.0-rc2.min.js" />
     <Content Include="Views\Home\expire.html" />
     <Content Include="Views\Home\index.html" />
     <Content Include="Views\Home\view.html" />
@@ -245,6 +270,7 @@
     <Compile Include="Helpers\DropboxHelper.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\ShareLikeAnythingBootstrap.cs" />
+    <Compile Include="Hubs\CodeEditorHub.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

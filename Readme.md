@@ -3,9 +3,11 @@ Share Like, Anything!
 
 Just a Drop || Paste > Share Link. 
 
-After 5 visits (not implemented yet) to the link, It'll be expired, deleted, destroyed, etc, etc...
+After 5 visits to the link, It'll be expired, deleted, destroyed, etc, etc...
 
-If you copy some text (not implemented yet) you can work collaborative
+If you copy some text you can work collaborative
+
+[Demo](http://sharelikeanything.apphb.com)
 
 Using
 ===
