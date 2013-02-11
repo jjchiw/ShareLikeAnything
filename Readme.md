@@ -11,10 +11,11 @@ If you paste some text or upload a text file you can work collaborative
 
 Using
 ===
-[nancy](http://nancyfx.org/)
-[ravendb](http://ravendb.net/)
-[signalr](http://signalr.net/)
-[codemirror](http://codemirror.net/)
+
+- [nancy](http://nancyfx.org/)
+- [ravendb](http://ravendb.net/)
+- [signalr](http://signalr.net/)
+- [codemirror](http://codemirror.net/)
 
 Made by La Calabaza
 
