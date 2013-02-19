@@ -56,23 +56,6 @@ namespace ShareLikeAnything.Helpers
 			var dropboxCredentials = new DropboxCredentials(apiKey, apiSecret, userToken, userSecret);
 
 			container.Register<DropboxCredentials>(dropboxCredentials);
-
-			var emailHost = WebConfigurationManager.AppSettings["emailHost"].ToString();
-			var emailPort = int.Parse(WebConfigurationManager.AppSettings["emailPort"].ToString());
-			var emailSSl = bool.Parse(WebConfigurationManager.AppSettings["emailSSl"].ToString());
-			var emailUsername = WebConfigurationManager.AppSettings["emailUsername"].ToString();
-			var emailPassword = WebConfigurationManager.AppSettings["emailPassword"].ToString();
-
-			var pop3Helper = new Pop3Helper(emailHost, emailPort, emailSSl, emailUsername, emailPassword);
-
-			container.Register<Pop3Helper>(pop3Helper);
-
-			container.Register<MailHelper>();
-
-			TaskExecutor.DropboxHelper = container.Resolve<DropboxHelper>();
-			TaskExecutor.ExecuteLater(new DeleteDataMoreThanDayTask());
-			TaskExecutor.StartExecuting();
-
 		}
 
 		protected override void RequestStartup(TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)

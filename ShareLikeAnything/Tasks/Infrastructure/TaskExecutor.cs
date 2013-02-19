@@ -84,8 +84,8 @@ namespace ShareLikeAnything.Tasks.Infrastructure
 
 		public static void ExecuteTask(BackgroundTask task)
 		{
-			for (var i = 0; i < 10; i++)
-			{
+			//for (var i = 0; i < 10; i++)
+			//{
 				using (var session = DocumentStore.OpenSession())
 				{
 					switch (task.Run(session, _documentStore, DropboxHelper))
@@ -97,7 +97,7 @@ namespace ShareLikeAnything.Tasks.Infrastructure
 							break;
 					}
 				}
-			}
+			//}
 		}
 	}
 }

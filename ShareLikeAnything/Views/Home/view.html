@@ -122,6 +122,7 @@
 
             <footer>
                 <p>&copy; La Calabaza 2013</p>
+                <p>Proudly hosted by <a href="http://appharbor.com">AppHarbor</a>.</p>
             </footer>
 
         </div> <!-- /container -->
@@ -132,16 +133,14 @@
         <script src="/js/vendor/signalr/jquery.signalR-1.0.0-rc2.min.js"></script>
         <script src="/signalr/hubs" type="text/javascript"></script>
         <script src="/js/vendor/diffmatchpatch/diff_match_patch.js" type="text/javascript"></script>
-        <script src="/js/view.js"></script>
-
 
         <script src="/js/vendor/bootstrap.min.js"></script>
-        <script src="/js/view.js"></script>
+        
 
         <script src="/js/vendor/codemirror/codemirror.js"></script>
 
         <script type="text/javascript">
-        	var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+            var _gaq = [['_setAccount', 'UA-38609034-1'], ['_trackPageview']];
         	(function (d, t) {
         		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
         		g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
@@ -151,7 +150,7 @@
       var editorHub = $.connection.codeEditorHub;
       var dmp = new diff_match_patch();
 
-      var myCodeMirror = CodeMirror.fromTextArea(codeArea, {
+      var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('codeArea'), {
           lineNumbers: true,
           tabMode: "indent",
           onKeyEvent: function (editor, event) {
@@ -161,8 +160,9 @@
               }
           }
       });
+      myCodeMirror.setSize(500, 300);
         </script>
-
+        <script src="/js/view.js"></script>
         <script src="/js/vendor/codemirror/mode/apl/apl.js"></script> 
         <script src="/js/vendor/codemirror/mode/asterisk/asterisk.js"></script> 
         <script src="/js/vendor/codemirror/mode/clike/clike.js"></script> 

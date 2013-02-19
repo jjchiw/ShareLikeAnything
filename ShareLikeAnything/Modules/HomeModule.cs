@@ -9,8 +9,8 @@ using Nancy.Extensions;
 using Raven.Client;
 using ShareLikeAnything.Models;
 using System.Text;
-using OpenPop.Pop3;
-using OpenPop.Mime;
+using ShareLikeAnything.Tasks.Infrastructure;
+using ShareLikeAnything.Tasks;
 
 namespace ShareLikeAnything.Modules
 {
@@ -18,20 +18,19 @@ namespace ShareLikeAnything.Modules
 	{
 		readonly DataUploadHelper _dataUploadHelper;
 		readonly IDocumentSession _session;
-		readonly MailHelper _mailHelper;
 		readonly DropboxHelper _dropboxHelper;
-		readonly Pop3Helper _pop3Helper;
 
-		public HomeModule(DataUploadHelper dataUploadHelper, IDocumentSession session, MailHelper mailHelper, Pop3Helper pop3Helper, DropboxHelper dropboxHelper)
+		public HomeModule(DataUploadHelper dataUploadHelper, IDocumentSession session, DropboxHelper dropboxHelper)
 		{
 			_dataUploadHelper = dataUploadHelper;
 			_session = session;
-			_mailHelper = mailHelper;
-			_pop3Helper = pop3Helper;
 			_dropboxHelper = dropboxHelper;
 
 			Get["/"] = x =>
 			{
+				TaskExecutor.DropboxHelper = _dropboxHelper;
+				TaskExecutor.ExecuteTask(new DeleteDataMoreThanDayTask());
+
 				return View["index.html"];
 			};
 
@@ -90,39 +89,6 @@ namespace ShareLikeAnything.Modules
 
 				return Response.FromStream(memoryStream, data.ContentType);
 			};
-
-			Post["/mail-share"] = _ =>
-			{
-				var allMessage = _pop3Helper.FetchAllMessages();
-				foreach (var m in allMessage)
-				{
-					var dataId = "";
-					var attachments = m.FindAllAttachments();
-					if(attachments.Count > 0)
-					{
-						var msgAttachment = attachments.FirstOrDefault();
-
-						using(var ms = new MemoryStream(msgAttachment.Body))
-						{
-							if(Path.GetExtension(msgAttachment.FileName) != "")
-								dataId = _dataUploadHelper.UploadData(msgAttachment.FileName, msgAttachment.ContentType.MediaType, ms);
-							else
-								dataId = _dataUploadHelper.UploadData(msgAttachment.ContentType.MediaType, ms);
-						}
-					}
-					else
-					{
-						var txt = m.FindFirstPlainTextVersion().GetBodyAsText();
-						dataId = _dataUploadHelper.UploadData(txt);
-					}
-					var body = string.Format("http://{0}/view/datas/{1}", Request.Url.BasePath, dataId);
-					var ccs = m.Headers.Cc.Select(x => x.Address).ToList();
-					_mailHelper.SendMessage(ccs, body, m.Headers.From.Address);
-				}
-
-				return HttpStatusCode.OK;
-			};
-
 		}
 
 		
