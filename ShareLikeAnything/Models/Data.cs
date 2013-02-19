@@ -12,6 +12,7 @@ namespace ShareLikeAnything.Models
 		public string Url { get; set; }
 		public string ContentType { get; set; }
 		public int TimesView { get; set; }
+		public DateTime CreatedDate { get; set; }
 
 		public Data()
 		{

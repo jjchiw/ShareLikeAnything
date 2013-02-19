@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using ShareLikeAnything.Models;
 using Raven.Client;
+using System.Text;
 
 namespace ShareLikeAnything.Helpers
 {
@@ -21,10 +22,16 @@ namespace ShareLikeAnything.Helpers
 
 		internal string UploadData(string value)
 		{
+			if (Encoding.UTF8.GetByteCount(value) > 1000000)
+			{
+				throw new FileLoadException();
+			}
+
 			var data = new Data
 			{
 				Text = value,
-				ContentType = "text/plain"
+				ContentType = "text/plain",
+				CreatedDate = DateTime.UtcNow
 			};
 
 			_session.Store(data);
@@ -35,16 +42,32 @@ namespace ShareLikeAnything.Helpers
 
 		internal string UploadData(string contentType, Stream stream, string fileExtension = "")
 		{
+			if (stream.Length > 5000000)
+			{
+				throw new FileLoadException();
+			}
+
 			var extension = (fileExtension != "" ? fileExtension : string.Format(".{0}", MimeHelper.GetExtension(contentType)));
 			if(extension == ".")
 				extension = "";
 			var fileName = string.Format("{0}{1}", Guid.NewGuid().ToString(), extension);
-			var path = _dropboxHelper.Upload(fileName, ReadFully(stream));
 
+			return UploadData(fileName, contentType, stream);
+		}
+
+		internal string UploadData(string fileName, string contentType, Stream stream)
+		{
+			if (stream.Length > 5000000)
+			{
+				throw new FileLoadException();
+			}
+
+			var path = _dropboxHelper.Upload(fileName, ReadFully(stream));
 			var data = new Data
 			{
 				Url = path,
-				ContentType = contentType
+				ContentType = contentType,
+				CreatedDate = DateTime.UtcNow
 			};
 
 			_session.Store(data);
