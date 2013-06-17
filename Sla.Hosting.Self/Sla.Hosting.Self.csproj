@@ -1,0 +1,711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9EA64C50-15F8-42B4-BA13-EC77FE26BF74}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sla.Hosting.Self</RootNamespace>
+    <AssemblyName>Sla.Hosting.Self</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.1.1.2\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.1.2\lib\net40\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=0.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.0.21.0-pre\lib\net40\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=0.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.0.21.0-pre\lib\net40\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.17.1\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Owin">
+      <HintPath>..\packages\Nancy.Owin.0.17.1\lib\net40\Nancy.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Content\js\vendor\codemirror\mode\coffeescript\LICENSE" />
+    <None Include="Content\js\vendor\codemirror\mode\pascal\LICENSE" />
+    <None Include="Content\js\vendor\codemirror\mode\perl\LICENSE" />
+    <None Include="Content\js\vendor\codemirror\mode\ruby\LICENSE" />
+    <None Include="Content\js\vendor\codemirror\mode\r\LICENSE" />
+    <None Include="Content\js\vendor\codemirror\mode\sieve\LICENSE" />
+    <None Include="Content\js\vendor\codemirror\mode\xquery\LICENSE" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ShareLikeAnything\ShareLikeAnything.csproj">
+      <Project>{39A55815-385B-4102-811A-A0C677F32A25}</Project>
+      <Name>ShareLikeAnything</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\ShareLikeAnything\Content\css\bootstrap-responsive.css">
+      <Link>Content\css\bootstrap-responsive.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\css\bootstrap-responsive.min.css">
+      <Link>Content\css\bootstrap-responsive.min.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\css\bootstrap.css">
+      <Link>Content\css\bootstrap.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\css\bootstrap.min.css">
+      <Link>Content\css\bootstrap.min.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\css\codemirror.css">
+      <Link>Content\css\codemirror.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\css\main.css">
+      <Link>Content\css\main.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\img\glyphicons-halflings-white.png">
+      <Link>Content\img\glyphicons-halflings-white.png</Link>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\img\glyphicons-halflings.png">
+      <Link>Content\img\glyphicons-halflings.png</Link>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\main.js">
+      <Link>Content\js\main.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\bootstrap.js">
+      <Link>Content\js\vendor\bootstrap.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\bootstrap.min.js">
+      <Link>Content\js\vendor\bootstrap.min.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\codemirror.js">
+      <Link>Content\js\vendor\codemirror\codemirror.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\diffmatchpatch\diff_match_patch.js">
+      <Link>Content\js\vendor\diffmatchpatch\diff_match_patch.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\jquery-1.9.0.min.js">
+      <Link>Content\js\vendor\jquery-1.9.0.min.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js">
+      <Link>Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\signalr\jquery.signalR-1.1.2.js">
+      <Link>Content\js\vendor\signalr\jquery.signalR-1.1.2.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\signalr\jquery.signalR-1.1.2.min.js">
+      <Link>Content\js\vendor\signalr\jquery.signalR-1.1.2.min.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\view.js">
+      <Link>Content\js\view.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Views\Home\expire.html">
+      <Link>Views\Home\expire.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Views\Home\index.html">
+      <Link>Views\Home\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\apl\apl.js">
+      <Link>Content\js\vendor\codemirror\mode\apl\apl.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\apl\index.html">
+      <Link>Content\js\vendor\codemirror\mode\apl\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\asterisk\asterisk.js">
+      <Link>Content\js\vendor\codemirror\mode\asterisk\asterisk.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\asterisk\index.html">
+      <Link>Content\js\vendor\codemirror\mode\asterisk\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\clike\clike.js">
+      <Link>Content\js\vendor\codemirror\mode\clike\clike.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\clike\index.html">
+      <Link>Content\js\vendor\codemirror\mode\clike\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\clike\scala.html">
+      <Link>Content\js\vendor\codemirror\mode\clike\scala.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\clojure\clojure.js">
+      <Link>Content\js\vendor\codemirror\mode\clojure\clojure.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\clojure\index.html">
+      <Link>Content\js\vendor\codemirror\mode\clojure\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\coffeescript\coffeescript.js">
+      <Link>Content\js\vendor\codemirror\mode\coffeescript\coffeescript.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\coffeescript\index.html">
+      <Link>Content\js\vendor\codemirror\mode\coffeescript\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\commonlisp\commonlisp.js">
+      <Link>Content\js\vendor\codemirror\mode\commonlisp\commonlisp.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\commonlisp\index.html">
+      <Link>Content\js\vendor\codemirror\mode\commonlisp\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\css\css.js">
+      <Link>Content\js\vendor\codemirror\mode\css\css.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\css\index.html">
+      <Link>Content\js\vendor\codemirror\mode\css\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\css\test.js">
+      <Link>Content\js\vendor\codemirror\mode\css\test.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\diff\diff.js">
+      <Link>Content\js\vendor\codemirror\mode\diff\diff.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\diff\index.html">
+      <Link>Content\js\vendor\codemirror\mode\diff\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\d\d.js">
+      <Link>Content\js\vendor\codemirror\mode\d\d.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\d\index.html">
+      <Link>Content\js\vendor\codemirror\mode\d\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ecl\ecl.js">
+      <Link>Content\js\vendor\codemirror\mode\ecl\ecl.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ecl\index.html">
+      <Link>Content\js\vendor\codemirror\mode\ecl\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\erlang\erlang.js">
+      <Link>Content\js\vendor\codemirror\mode\erlang\erlang.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\erlang\index.html">
+      <Link>Content\js\vendor\codemirror\mode\erlang\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\gfm\gfm.js">
+      <Link>Content\js\vendor\codemirror\mode\gfm\gfm.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\gfm\index.html">
+      <Link>Content\js\vendor\codemirror\mode\gfm\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\gfm\test.js">
+      <Link>Content\js\vendor\codemirror\mode\gfm\test.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\go\go.js">
+      <Link>Content\js\vendor\codemirror\mode\go\go.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\go\index.html">
+      <Link>Content\js\vendor\codemirror\mode\go\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\groovy\groovy.js">
+      <Link>Content\js\vendor\codemirror\mode\groovy\groovy.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\groovy\index.html">
+      <Link>Content\js\vendor\codemirror\mode\groovy\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\haskell\haskell.js">
+      <Link>Content\js\vendor\codemirror\mode\haskell\haskell.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\haskell\index.html">
+      <Link>Content\js\vendor\codemirror\mode\haskell\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\haxe\haxe.js">
+      <Link>Content\js\vendor\codemirror\mode\haxe\haxe.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\haxe\index.html">
+      <Link>Content\js\vendor\codemirror\mode\haxe\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\htmlembedded\htmlembedded.js">
+      <Link>Content\js\vendor\codemirror\mode\htmlembedded\htmlembedded.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\htmlembedded\index.html">
+      <Link>Content\js\vendor\codemirror\mode\htmlembedded\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\htmlmixed\htmlmixed.js">
+      <Link>Content\js\vendor\codemirror\mode\htmlmixed\htmlmixed.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\htmlmixed\index.html">
+      <Link>Content\js\vendor\codemirror\mode\htmlmixed\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\http\http.js">
+      <Link>Content\js\vendor\codemirror\mode\http\http.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\http\index.html">
+      <Link>Content\js\vendor\codemirror\mode\http\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\javascript\index.html">
+      <Link>Content\js\vendor\codemirror\mode\javascript\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\javascript\javascript.js">
+      <Link>Content\js\vendor\codemirror\mode\javascript\javascript.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\javascript\typescript.html">
+      <Link>Content\js\vendor\codemirror\mode\javascript\typescript.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\jinja2\index.html">
+      <Link>Content\js\vendor\codemirror\mode\jinja2\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\jinja2\jinja2.js">
+      <Link>Content\js\vendor\codemirror\mode\jinja2\jinja2.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\less\index.html">
+      <Link>Content\js\vendor\codemirror\mode\less\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\less\less.js">
+      <Link>Content\js\vendor\codemirror\mode\less\less.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\lua\index.html">
+      <Link>Content\js\vendor\codemirror\mode\lua\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\lua\lua.js">
+      <Link>Content\js\vendor\codemirror\mode\lua\lua.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\markdown\index.html">
+      <Link>Content\js\vendor\codemirror\mode\markdown\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\markdown\markdown.js">
+      <Link>Content\js\vendor\codemirror\mode\markdown\markdown.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\markdown\test.js">
+      <Link>Content\js\vendor\codemirror\mode\markdown\test.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\meta.js">
+      <Link>Content\js\vendor\codemirror\mode\meta.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\mysql\index.html">
+      <Link>Content\js\vendor\codemirror\mode\mysql\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\mysql\mysql.js">
+      <Link>Content\js\vendor\codemirror\mode\mysql\mysql.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ntriples\index.html">
+      <Link>Content\js\vendor\codemirror\mode\ntriples\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ntriples\ntriples.js">
+      <Link>Content\js\vendor\codemirror\mode\ntriples\ntriples.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ocaml\index.html">
+      <Link>Content\js\vendor\codemirror\mode\ocaml\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ocaml\ocaml.js">
+      <Link>Content\js\vendor\codemirror\mode\ocaml\ocaml.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\pascal\index.html">
+      <Link>Content\js\vendor\codemirror\mode\pascal\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\pascal\pascal.js">
+      <Link>Content\js\vendor\codemirror\mode\pascal\pascal.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\perl\index.html">
+      <Link>Content\js\vendor\codemirror\mode\perl\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\perl\perl.js">
+      <Link>Content\js\vendor\codemirror\mode\perl\perl.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\php\index.html">
+      <Link>Content\js\vendor\codemirror\mode\php\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\php\php.js">
+      <Link>Content\js\vendor\codemirror\mode\php\php.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\pig\index.html">
+      <Link>Content\js\vendor\codemirror\mode\pig\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\pig\pig.js">
+      <Link>Content\js\vendor\codemirror\mode\pig\pig.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\plsql\index.html">
+      <Link>Content\js\vendor\codemirror\mode\plsql\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\plsql\plsql.js">
+      <Link>Content\js\vendor\codemirror\mode\plsql\plsql.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\properties\index.html">
+      <Link>Content\js\vendor\codemirror\mode\properties\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\properties\properties.js">
+      <Link>Content\js\vendor\codemirror\mode\properties\properties.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\python\index.html">
+      <Link>Content\js\vendor\codemirror\mode\python\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\python\LICENSE.txt">
+      <Link>Content\js\vendor\codemirror\mode\python\LICENSE.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\python\python.js">
+      <Link>Content\js\vendor\codemirror\mode\python\python.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rpm\changes\changes.js">
+      <Link>Content\js\vendor\codemirror\mode\rpm\changes\changes.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rpm\changes\index.html">
+      <Link>Content\js\vendor\codemirror\mode\rpm\changes\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rpm\spec\index.html">
+      <Link>Content\js\vendor\codemirror\mode\rpm\spec\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rpm\spec\spec.css">
+      <Link>Content\js\vendor\codemirror\mode\rpm\spec\spec.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rpm\spec\spec.js">
+      <Link>Content\js\vendor\codemirror\mode\rpm\spec\spec.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rst\index.html">
+      <Link>Content\js\vendor\codemirror\mode\rst\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rst\rst.js">
+      <Link>Content\js\vendor\codemirror\mode\rst\rst.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ruby\index.html">
+      <Link>Content\js\vendor\codemirror\mode\ruby\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\ruby\ruby.js">
+      <Link>Content\js\vendor\codemirror\mode\ruby\ruby.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rust\index.html">
+      <Link>Content\js\vendor\codemirror\mode\rust\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\rust\rust.js">
+      <Link>Content\js\vendor\codemirror\mode\rust\rust.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\r\index.html">
+      <Link>Content\js\vendor\codemirror\mode\r\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\r\r.js">
+      <Link>Content\js\vendor\codemirror\mode\r\r.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sass\index.html">
+      <Link>Content\js\vendor\codemirror\mode\sass\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sass\sass.js">
+      <Link>Content\js\vendor\codemirror\mode\sass\sass.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\scheme\index.html">
+      <Link>Content\js\vendor\codemirror\mode\scheme\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\scheme\scheme.js">
+      <Link>Content\js\vendor\codemirror\mode\scheme\scheme.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\shell\index.html">
+      <Link>Content\js\vendor\codemirror\mode\shell\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\shell\shell.js">
+      <Link>Content\js\vendor\codemirror\mode\shell\shell.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sieve\index.html">
+      <Link>Content\js\vendor\codemirror\mode\sieve\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sieve\sieve.js">
+      <Link>Content\js\vendor\codemirror\mode\sieve\sieve.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\smalltalk\index.html">
+      <Link>Content\js\vendor\codemirror\mode\smalltalk\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\smalltalk\smalltalk.js">
+      <Link>Content\js\vendor\codemirror\mode\smalltalk\smalltalk.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\smarty\index.html">
+      <Link>Content\js\vendor\codemirror\mode\smarty\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\smarty\smarty.js">
+      <Link>Content\js\vendor\codemirror\mode\smarty\smarty.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sparql\index.html">
+      <Link>Content\js\vendor\codemirror\mode\sparql\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sparql\sparql.js">
+      <Link>Content\js\vendor\codemirror\mode\sparql\sparql.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sql\index.html">
+      <Link>Content\js\vendor\codemirror\mode\sql\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\sql\sql.js">
+      <Link>Content\js\vendor\codemirror\mode\sql\sql.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\stex\index.html">
+      <Link>Content\js\vendor\codemirror\mode\stex\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\stex\stex.js">
+      <Link>Content\js\vendor\codemirror\mode\stex\stex.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\stex\test.js">
+      <Link>Content\js\vendor\codemirror\mode\stex\test.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\tiddlywiki\index.html">
+      <Link>Content\js\vendor\codemirror\mode\tiddlywiki\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\tiddlywiki\tiddlywiki.css">
+      <Link>Content\js\vendor\codemirror\mode\tiddlywiki\tiddlywiki.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\tiddlywiki\tiddlywiki.js">
+      <Link>Content\js\vendor\codemirror\mode\tiddlywiki\tiddlywiki.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\tiki\index.html">
+      <Link>Content\js\vendor\codemirror\mode\tiki\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\tiki\tiki.css">
+      <Link>Content\js\vendor\codemirror\mode\tiki\tiki.css</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\tiki\tiki.js">
+      <Link>Content\js\vendor\codemirror\mode\tiki\tiki.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\vbscript\index.html">
+      <Link>Content\js\vendor\codemirror\mode\vbscript\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\vbscript\vbscript.js">
+      <Link>Content\js\vendor\codemirror\mode\vbscript\vbscript.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\vb\index.html">
+      <Link>Content\js\vendor\codemirror\mode\vb\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\vb\LICENSE.txt">
+      <Link>Content\js\vendor\codemirror\mode\vb\LICENSE.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\vb\vb.js">
+      <Link>Content\js\vendor\codemirror\mode\vb\vb.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\velocity\index.html">
+      <Link>Content\js\vendor\codemirror\mode\velocity\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\velocity\velocity.js">
+      <Link>Content\js\vendor\codemirror\mode\velocity\velocity.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\verilog\index.html">
+      <Link>Content\js\vendor\codemirror\mode\verilog\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\verilog\verilog.js">
+      <Link>Content\js\vendor\codemirror\mode\verilog\verilog.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\xml\index.html">
+      <Link>Content\js\vendor\codemirror\mode\xml\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\xml\xml.js">
+      <Link>Content\js\vendor\codemirror\mode\xml\xml.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\xquery\index.html">
+      <Link>Content\js\vendor\codemirror\mode\xquery\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\xquery\test.js">
+      <Link>Content\js\vendor\codemirror\mode\xquery\test.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\xquery\xquery.js">
+      <Link>Content\js\vendor\codemirror\mode\xquery\xquery.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\yaml\index.html">
+      <Link>Content\js\vendor\codemirror\mode\yaml\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\yaml\yaml.js">
+      <Link>Content\js\vendor\codemirror\mode\yaml\yaml.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\z80\index.html">
+      <Link>Content\js\vendor\codemirror\mode\z80\index.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Content\js\vendor\codemirror\mode\z80\z80.js">
+      <Link>Content\js\vendor\codemirror\mode\z80\z80.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ShareLikeAnything\Views\Home\view.html">
+      <Link>Views\Home\view.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
