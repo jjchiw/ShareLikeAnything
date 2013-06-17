@@ -24,8 +24,6 @@ namespace ShareLikeAnything.Helpers
 		protected override void ApplicationStartup(TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
 		{
 			base.ApplicationStartup(container, pipelines);
-
-			RouteTable.Routes.MapHubs();
 		}
 
 		protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
