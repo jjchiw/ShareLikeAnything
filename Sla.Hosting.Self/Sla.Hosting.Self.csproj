@@ -85,7 +85,6 @@
     <None Include="Content\js\vendor\codemirror\mode\xquery\LICENSE" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ShareLikeAnything\ShareLikeAnything.csproj">
       <Project>{39A55815-385B-4102-811A-A0C677F32A25}</Project>
