@@ -17,6 +17,8 @@ Using
 - [signalr](http://signalr.net/)
 - [codemirror](http://codemirror.net/)
 
+This branch is used for self-hosting using OWIN
+
 Made by La Calabaza
 
 ![La Calabaza](https://github.com/jjchiw/dpath/raw/master/calabaza.png "La Calabaza")
