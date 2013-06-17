@@ -13,7 +13,7 @@ namespace ShareLikeAnything.Tasks
 	{
 		public override void Execute()
 		{
-			var beforeDate = DateTime.UtcNow.AddDays(-1).Date.ToString("yyyy-MM-dd");
+			var beforeDate = DateTime.UtcNow.AddDays(-1).Date.ToString("yyyyMMdd");
 
 			var datas = DocumentSession.Advanced.LuceneQuery<Data>("DataCreatedDateIndex")
 												.Where(string.Format("CreatedDate:[* TO {0}]", beforeDate))
