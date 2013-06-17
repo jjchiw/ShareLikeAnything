@@ -70,16 +70,16 @@ namespace ShareLikeAnything.Modules
 				}
 				data.TimesView--;
 
-				if (data.TimesView == 0)
-				{
-					if (data.Url != null && data.Url != string.Empty)
-					{
-						_dropboxHelper.DeleteFile(data.Url);
-					}
+				//if (data.TimesView == 0)
+				//{
+				//    if (data.Url != null && data.Url != string.Empty)
+				//    {
+				//        _dropboxHelper.DeleteFile(data.Url);
+				//    }
 						
-					session.Delete<Data>(data);
-					return View["expire.html"];
-				}
+				//    session.Delete<Data>(data);
+				//    return View["expire.html"];
+				//}
 
 				if (data.ContentType == "text/plain" && data.Url == null || data.Url == string.Empty)
 					return View["view", new { Data = data.Text, SessionId = Guid.NewGuid().ToString() }];

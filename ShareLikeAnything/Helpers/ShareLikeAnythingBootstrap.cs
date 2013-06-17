@@ -25,7 +25,8 @@ namespace ShareLikeAnything.Helpers
 		{
 			base.ApplicationStartup(container, pipelines);
 
-			RouteTable.Routes.MapHubs();
+			if(WebConfigurationManager.AppSettings["hostingSelf"] == "false")
+				RouteTable.Routes.MapHubs();
 		}
 
 		protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
