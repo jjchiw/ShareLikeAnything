@@ -7,6 +7,7 @@ using Owin;
 using Microsoft.Owin.Hosting;
 using Microsoft.AspNet.SignalR;
 using Nancy.Owin;
+using System.Configuration;
 
 namespace Sla.Hosting.Self
 {
@@ -14,7 +15,11 @@ namespace Sla.Hosting.Self
 	{
 		static void Main(string[] args)
 		{
-			string url = "http://127.0.0.1";
+			var port = ConfigurationManager.AppSettings["port"];
+			if (string.IsNullOrEmpty(port))
+				port = "80";
+
+			string url = string.Format("{0}:{1}", "http://127.0.0.1", port);
 
 			using (WebApplication.Start<Startup>(url))
 			{
