@@ -251,9 +251,9 @@
     <Content Include="Content\js\vendor\diffmatchpatch\diff_match_patch.js" />
     <Content Include="Content\js\vendor\jquery-1.9.0.min.js" />
     <Content Include="Content\js\vendor\modernizr-2.6.2-respond-1.1.0.min.js" />
-    <Content Include="Content\js\view.js" />
     <Content Include="Content\js\vendor\signalr\jquery.signalR-1.1.2.js" />
     <Content Include="Content\js\vendor\signalr\jquery.signalR-1.1.2.min.js" />
+    <Content Include="Content\js\view.js" />
     <Content Include="Views\Home\expire.html" />
     <Content Include="Views\Home\index.html" />
     <Content Include="Views\Home\view.html" />
