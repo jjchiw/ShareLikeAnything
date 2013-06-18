@@ -16,6 +16,7 @@ using ShareLikeAnything.Tasks;
 using ShareLikeAnything.Tasks.Infrastructure;
 using Raven.Client.Indexes;
 using ShareLikeAnything.Helpers.Indexes;
+using System.Configuration;
 
 namespace ShareLikeAnything.Helpers
 {
@@ -47,10 +48,10 @@ namespace ShareLikeAnything.Helpers
 			container.Register<IDocumentStore>(documentStore);
 			container.Register<IDocumentSession>(documentStore.OpenSession());
 
-			var apiKey = WebConfigurationManager.AppSettings["dropboxApiKey"].ToString();
-			var apiSecret = WebConfigurationManager.AppSettings["dropboxApiSecret"].ToString();
-			var userToken = WebConfigurationManager.AppSettings["dropboxApiUserToken"].ToString();
-			var userSecret = WebConfigurationManager.AppSettings["dropboxApiUserSecret"].ToString();
+			var apiKey = ConfigurationManager.AppSettings["dropboxApiKey"].ToString();
+			var apiSecret = ConfigurationManager.AppSettings["dropboxApiSecret"].ToString();
+			var userToken = ConfigurationManager.AppSettings["dropboxApiUserToken"].ToString();
+			var userSecret = ConfigurationManager.AppSettings["dropboxApiUserSecret"].ToString();
 
 			var dropboxCredentials = new DropboxCredentials(apiKey, apiSecret, userToken, userSecret);
 
