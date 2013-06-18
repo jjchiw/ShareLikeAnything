@@ -39,6 +39,7 @@ namespace ShareLikeAnything.Helpers
 				Url = parser.ConnectionStringOptions.Url
 			};
 
+			documentStore.EnlistInDistributedTransactions = false;
 			documentStore.Initialize();
 
 			IndexCreation.CreateIndexes(typeof(DataCreatedDateIndex).Assembly, documentStore);
