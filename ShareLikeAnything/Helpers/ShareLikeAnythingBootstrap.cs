@@ -37,10 +37,11 @@ namespace ShareLikeAnything.Helpers
 			var documentStore = new DocumentStore
 			{
 				ApiKey = parser.ConnectionStringOptions.ApiKey,
-				Url = parser.ConnectionStringOptions.Url
+				Url = parser.ConnectionStringOptions.Url,
+				EnlistInDistributedTransactions = false
 			};
 
-			documentStore.EnlistInDistributedTransactions = false;
+			documentStore.JsonRequestFactory.DisableRequestCompression = true;
 			documentStore.Initialize();
 
 			IndexCreation.CreateIndexes(typeof(DataCreatedDateIndex).Assembly, documentStore);
