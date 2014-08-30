@@ -59,7 +59,7 @@ $("body").ready(function () {
 			if (oReq.readyState == 4) {
 				if (oReq.status == 200) {
 					stopLoading();
-					shareUrl = "http://" + document.domain + "/view/" + data.currentTarget.responseText);
+					shareUrl = "http://" + document.domain + "/view/" + data.currentTarget.responseText;
 					$("#shareLink").html('<a href="'+ shareUrl +'">'+ shareUrl +'</a>');
 					$('#myModal').modal('show');
 				}
