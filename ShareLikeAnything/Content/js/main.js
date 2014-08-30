@@ -53,12 +53,14 @@ $("body").ready(function () {
 		// HTML file input user's choice...
 		oMyForm.append("data", blob);
 
-		var oReq = new XMLHttpRequest();
+		var oReq = new XMLHttpRequest(),
+			shareUrl;
 		oReq.onreadystatechange = function (data) {
 			if (oReq.readyState == 4) {
 				if (oReq.status == 200) {
 					stopLoading();
-					$("#shareLink").html("http://" + document.domain + "/view/" + data.currentTarget.responseText);
+					shareUrl = "http://" + document.domain + "/view/" + data.currentTarget.responseText);
+					$("#shareLink").html('<a href="'+ shareUrl +'">'+ shareUrl +'</a>');
 					$('#myModal').modal('show');
 				}
 			}
