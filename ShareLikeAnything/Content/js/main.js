@@ -76,7 +76,7 @@ $("body").ready(function () {
 	}
 
 	$("#goToLink").click(function (e) {
-		window.location = $("#shareLink").html();
+		window.location =  $("#shareLink a").attr("href");
 	});
 
 	$("#copyToClipboard").click(function (e) {
